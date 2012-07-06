@@ -1,4 +1,6 @@
-define ssl::key () {
+define ssl::key (
+  $source = "puppet:///files/ssl/key_${name}.key",
+) {
   include ssl::variables
   include ssl::common
 
@@ -6,7 +8,7 @@ define ssl::key () {
     ensure  => file,
     mode    => '0440',
     group   => 'ssl-cert',
-    source  => "puppet:///files/ssl/key_${name}.key",
+    source  => $source,
     require => Package['openssl']
   }
 }
