@@ -4,10 +4,10 @@
 
 # File containing the global certificate used for ALL services (imap, pop3,
 # lmtp, sieve)
-tls_cert_file: <%= scope.lookupvar("ssl::variables::ssl_certs") %>/cert_<%= @cert %>.pem
+tls_server_cert: <%= scope.lookupvar("ssl::variables::ssl_certs") %>/cert_<%= @cert %>.pem
 
 # File containing the private key belonging to the global server certificate.
-tls_key_file: <%= scope.lookupvar("ssl::variables::ssl_private") %>/key_<%= @key %>.key
+tls_server_key: <%= scope.lookupvar("ssl::variables::ssl_private") %>/key_<%= @key %>.key
 
 # File containing the certificate used for imap. If not specified, the global
 # certificate is used.  A value of "disabled" will disable SSL/TLS for imap.
@@ -46,7 +46,7 @@ tls_key_file: <%= scope.lookupvar("ssl::variables::ssl_private") %>/key_<%= @key
 #sieve_tls_key_file: <%= scope.lookupvar("ssl::variables::ssl_root") %>/private/cyrus-sieve.key
 
 # File containing one or more Certificate Authority (CA) certificates.
-tls_ca_file: <%= scope.lookupvar("ssl::variables::ssl_certs") %>/cert_<%= @ca %>.pem
+tls_client_ca_file: <%= scope.lookupvar("ssl::variables::ssl_certs") %>/cert_<%= @ca %>.pem
 
 # Path to directory with certificates of CAs.
 #tls_ca_path: <%= scope.lookupvar("ssl::variables::ssl_certs") %>
@@ -61,7 +61,7 @@ tls_session_timeout: 1440
 # selects TLSv1 high-security ciphers only, and removes all anonymous ciphers
 # from the list (because they provide no defense against man-in-the-middle
 # attacks).  It also orders the list so that stronger ciphers come first.
-tls_cipher_list: TLSv1+HIGH:!aNULL:@STRENGTH
+tls_ciphers: TLSv1+HIGH:!aNULL:@STRENGTH
 
 # Require a client certificate for ALL services (imap, pop3, lmtp, sieve).
 #tls_require_cert: false
