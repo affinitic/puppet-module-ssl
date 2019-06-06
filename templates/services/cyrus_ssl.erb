@@ -46,7 +46,7 @@ tls_server_key: <%= scope.lookupvar("ssl::variables::ssl_private") %>/key_<%= @k
 #sieve_tls_key_file: <%= scope.lookupvar("ssl::variables::ssl_root") %>/private/cyrus-sieve.key
 
 # File containing one or more Certificate Authority (CA) certificates.
-#tls_client_ca_file: <%= scope.lookupvar("ssl::variables::ssl_certs") %>/cert_<%= @ca %>.pem
+tls_client_ca_file: <%= scope.lookupvar("ssl::variables::ssl_certs") %>/chain_<%= @ca %>.pem
 
 # Path to directory with certificates of CAs.
 #tls_ca_path: <%= scope.lookupvar("ssl::variables::ssl_certs") %>
